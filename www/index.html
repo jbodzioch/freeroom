@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  ng-app="startrer">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+ 
+ 
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    
+    <!-- (production) -->
+    <!--<script src="js/ng-cordova-beacon.min.js"></script>-->
+    <!-- (development) -->
+    <script src="js/ng-cordova-beacon.js"></script>
+    
+    
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+  </head>
+  <body ng-controller="MainCtrl">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Room Booker</h1>
+      </ion-header-bar>
+      <ion-content>
+          <!-- our list and list items -->
+          <ion-item ng-show="showRefresh">
+           <p>{{messageText}}</p>
+          </ion-item>
+          <button class="button button-block button-assertive" ng-click="refreshClickFunction()" ng-show="showRefresh">
+            {{refreshButtonContent}}
+          </button>
+          <ion-list ng-hide="showRefresh">
+              <ion-item ng-repeat="room in rooms" class = "item item-button-right">
+                  {{room.name}}
+                  <button class="button button-balanced" ng-click="reserve(room)">
+                    Reserve
+                </button>
+              </ion-item>
+          </ion-list>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
